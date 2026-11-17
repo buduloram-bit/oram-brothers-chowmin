@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#160b06">
+<meta name="description" content="Order fresh chowmin and snacks from Oram Brother's Chowmin Centre.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icon-192.png">
+<title>Oram Brother's Chowmin Centre</title>
+<style>
+:root{--bg:#100906;--panel:#1d110b;--gold:#ffc64a;--red:#d52b20;--cream:#fff5e3;--muted:#c7b7a3;--green:#20a45a}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}
+header{position:sticky;top:0;z-index:10;background:#090605f2;border-bottom:1px solid #75521c;padding:13px 5%;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:1000;color:var(--gold);font-size:16px;letter-spacing:.5px}nav{display:flex;gap:15px}nav a{color:#fff;text-decoration:none;font-size:13px;font-weight:bold}
+.welcome{display:flex;align-items:center;gap:12px;margin-bottom:18px}.welcome img{width:62px;height:62px;flex:0 0 62px;object-fit:cover;border-radius:50%;border:3px solid var(--gold);box-shadow:0 3px 14px #0009}.welcome strong{display:block;color:#fff;font-size:15px}.welcome span{display:block;color:var(--gold);font-size:13px;margin-top:4px;font-weight:bold}.delivery-status{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:20px;background:#18351f;color:#b9ffd0;font-size:12px;font-weight:bold;margin-top:10px}.delivery-status.off{background:#492019;color:#ffd1c8}.admin-panel{max-width:650px;margin:20px auto;background:#21140c;border:1px solid #805d27;border-radius:16px;padding:18px}.hero{padding:42px 5%;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:25px;background:radial-gradient(circle at 75% 30%,#6c330b,transparent 42%),linear-gradient(120deg,#100906,#281307)}
+.kicker{color:var(--gold);font-weight:900;letter-spacing:2px;font-size:12px;text-transform:uppercase}
+h1{font-size:clamp(38px,6vw,64px);line-height:.98;color:var(--gold);margin:12px 0;text-shadow:0 3px 16px #000}h1 span{color:white}
+.hero p{line-height:1.6;color:#eadbc8}.hero img{width:100%;height:340px;object-fit:cover;border-radius:20px;border:2px solid #a77a2c}
+.btn{border:0;display:inline-block;background:var(--green);color:white;text-decoration:none;font-weight:900;padding:13px 18px;border-radius:30px;cursor:pointer}
+.btn.red{background:var(--red)}.btn.gold{background:var(--gold);color:#211307}
+section{padding:48px 5%}.heading{text-align:center;margin:0 auto 25px;max-width:680px}.heading h2{font-size:32px;color:var(--gold);margin:8px 0}.heading p{color:var(--muted);line-height:1.5}
+.menu{background:#21140c}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.item{background:#120b07;border:1px solid #805d27;border-radius:16px;overflow:hidden}.item img{width:100%;height:135px;object-fit:cover}.item-body{padding:14px}.item h3{margin:0 0 7px;color:var(--gold);font-size:17px}.item p{margin:0 0 12px;color:var(--muted);font-size:13px}.price-row{display:flex;justify-content:space-between;align-items:center;gap:8px}.price{font-weight:900;color:#fff;font-size:18px}
+.cart-float{position:fixed;right:16px;bottom:16px;z-index:8;box-shadow:0 6px 25px #0009}
+.cart-panel{background:var(--panel);border:1px solid #805d27;border-radius:18px;padding:18px;margin-top:18px}
+.cart-line{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid #4d3824}.qty button{background:#3c2817;color:white;border:1px solid #8b672f;border-radius:8px;padding:5px 10px}
+input,textarea,select{width:100%;padding:12px;border-radius:10px;border:1px solid #82602d;background:#100906;color:white;font:inherit;margin:6px 0 12px}
+label{font-size:13px;color:#f4d9a9;font-weight:bold}textarea{min-height:75px;resize:vertical}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.notice{color:#f3d8a9;font-size:13px;line-height:1.5;background:#302012;padding:12px;border-radius:10px}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:14px}.gallery img{width:100%;height:270px;object-fit:cover;border-radius:16px;border:1px solid #805d27}
+footer{text-align:center;padding:25px;background:#070504;color:#b9a994;font-size:13px}
+dialog{background:#1b100a;color:white;border:1px solid #9b702a;border-radius:18px;width:min(92%,560px);max-height:90vh;overflow:auto}dialog::backdrop{background:#000b}.dialog-head{display:flex;justify-content:space-between;align-items:center}.close{background:transparent;border:0;color:white;font-size:26px}
+@media(max-width:720px){header{display:block}nav{justify-content:space-between;margin-top:10px;gap:7px}nav a{font-size:12px}.hero{grid-template-columns:1fr;padding-top:32px}.hero img{height:245px}.grid{grid-template-columns:1fr 1fr}.item img{height:110px}.form-grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}.gallery img{height:230px}}
+@media(max-width:390px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="brand">ORAM BROTHER'S CHOWMIN CENTRE</div><nav><a href="#home">Home</a><a href="#menu">Menu</a><a href="#cart">Cart</a><a href="#contact">Contact</a></nav></header>
+<main>
+<section class="hero" id="home"><div><div class="welcome"><img src="assets/owner-photo.jpg" alt="Oram Brothers owner"><div><strong>Namaste 🙏</strong><span>Welcome to Our Fast Food World</span></div></div><div class="kicker">Eat Good • Feel Good</div><div id="deliveryStatus" class="delivery-status">● Home Delivery Available</div><h1>ORAM<br><span>BROTHER'S</span><br>CHOWMIN</h1><p>Good Food • Great Taste • Always Fresh<br>Order your favourite food for home delivery.</p><button class="btn" onclick="document.querySelector('#menu').scrollIntoView()">Order Food</button></div><img src="assets/chowmin-plates.jpg" alt="Fresh chowmin plates"></section>
+<section class="menu" id="menu"><div class="heading"><div class="kicker">Freshly prepared</div><h2>Order from Our Menu</h2><p>Choose items, add them to your cart, and send your booking.</p></div><div class="grid" id="menuGrid"></div></section>
+<section id="cart"><div class="heading"><div class="kicker">Your order</div><h2>Shopping Cart</h2><p>Review your items before checkout.</p></div><div class="cart-panel" id="cartBox"><p>Your cart is empty. Add something tasty from the menu!</p></div></section>
+<section id="photos"><div class="heading"><div class="kicker">Our place</div><h2>Food & Stall Photos</h2></div><div class="gallery"><img src="assets/stall.jpg" alt="Our food stall"><img src="assets/poster.png" alt="Oram Brothers menu poster"></div></section>
+<section id="contact"><div class="heading"><div class="kicker">Visit or order</div><h2>Oram Brother's Chowmin Centre</h2><p>📍 Sarabahal Chowk, near Manoharpur Township<br>📱 WhatsApp / Contact: 6372892830</p><p class="notice" id="deliveryMessage">Home delivery ka option 5 ya usse zyada plates/items par milega, jab Owner Delivery ON rakhega.</p><a class="btn" href="https://wa.me/916372892830" target="_blank" rel="noopener">Chat on WhatsApp</a></div><div class="admin-panel"><h3 style="color:#ffc64a;margin-top:0">Shop Owner Controls</h3><p style="color:#c7b7a3;font-size:13px">Owner controls: item availability aur Home Delivery. Abhi settings isi device/browser mein save hongi.</p>
+<button class="btn gold" id="deliveryToggle" onclick="toggleDelivery()">Turn Home Delivery OFF</button>
+<p id="adminStatus" class="notice">Current setting: ON</p>
+<h3 style="color:#ffc64a">Menu Availability</h3><div id="ownerMenuControls"></div></div></section>
+</main>
+<button class="btn red cart-float" onclick="document.querySelector('#cart').scrollIntoView()">🛒 Cart (<span id="cartCount">0</span>)</button>
+<dialog id="checkout">
+<div class="dialog-head"><h2 style="color:#ffc64a">Checkout / Booking</h2><button class="close" onclick="checkout.close()">×</button></div>
+<form id="checkoutForm">
+<div class="form-grid"><div><label>Your name</label><input id="customerName" required placeholder="Full name"></div><div><label>Mobile number</label><input id="customerPhone" required inputmode="tel" pattern="[0-9]{10}" placeholder="10-digit number"></div></div>
+<label>Order Type</label><select id="orderType"><option value="delivery">Home Delivery</option><option value="pickup">Shop Pickup (Dukaan se lena hai)</option></select>
+<div id="addressWrap"><label>Delivery address</label><textarea id="customerAddress" required placeholder="House no., area, landmark, city"></textarea></div>
+<p id="orderTypeInfo" class="notice"></p>
+<label>Payment method</label><select id="paymentMethod"><option value="Cash on Delivery">Cash on Delivery</option><option value="UPI / Online Payment">UPI / Online Payment</option></select>
+<div class="notice" id="paymentNote">Cash on Delivery: pay when your order arrives.</div>
+<p class="notice">UPI ID: <strong>6372892830-3@ybl</strong>. UPI payment opens in your installed payment app. Please verify the payee name and amount before paying. Payment is not automatically verified by this website.</p>
+<button class="btn" style="width:100%;margin-top:8px" type="submit">Send Booking on WhatsApp</button>
+</form></dialog>
+<footer>© 2026 Oram Brother's Chowmin Centre • Sarabahal Chowk</footer>
+<script>
+const WHATSAPP='916372892830';
+// Add the shop's verified UPI ID here before enabling actual UPI payments.
+const SHOP_UPI_ID='6372892830-3@ybl';
+const DELIVERY_RADIUS_KM=10;
+let deliveryEnabled=localStorage.getItem('oramDeliveryEnabled')!=='false';
+let availability=JSON.parse(localStorage.getItem('oramMenuAvailability')||'{}');
+function renderDeliveryState(){
+ const badge=document.getElementById('deliveryStatus');
+ const toggle=document.getElementById('deliveryToggle');
+ const status=document.getElementById('adminStatus');
+ const message=document.getElementById('deliveryMessage');
+ if(badge){badge.textContent=deliveryEnabled?'● Home Delivery ON':'● Home Delivery OFF';badge.classList.toggle('off',!deliveryEnabled);}
+ if(toggle)toggle.textContent=deliveryEnabled?'Turn Home Delivery OFF':'Turn Home Delivery ON';
+ if(status)status.textContent='Home Delivery: '+(deliveryEnabled?'ON':'OFF')+'. '+(deliveryEnabled?'5 ya zyada total plates/items par option milega.':'Customer ko shop par aakar order lena hoga.');
+ if(message)message.textContent=deliveryEnabled?'Home Delivery 5 ya usse zyada total plates/items par available hai. 1–4 items ke liye Shop Pickup.':'Home Delivery abhi OFF hai. Customer ko dukaan par aakar order lena padega.';
+ updateOrderTypeOptions();
+}
+function toggleDelivery(){deliveryEnabled=!deliveryEnabled;localStorage.setItem('oramDeliveryEnabled',String(deliveryEnabled));renderDeliveryState();}
+function itemAvailable(id){return availability[id]!==false;}
+function saveAvailability(id,checked){availability[id]=checked;localStorage.setItem('oramMenuAvailability',JSON.stringify(availability));renderMenu();renderOwnerControls();renderCart();}
+function renderOwnerControls(){
+ const host=document.getElementById('ownerMenuControls');if(!host)return;
+ host.innerHTML=products.map(p=>`<label style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid #614326;color:#fff"><span>${p.emoji} ${p.name}</span><span><input type="checkbox" ${itemAvailable(p.id)?'checked':''} onchange="saveAvailability('${p.id}',this.checked)"> Available</span></label>`).join('');
+}
+function renderMenu(){
+ menuGrid.innerHTML='';
+ products.forEach(p=>{
+  const available=itemAvailable(p.id);
+  const el=document.createElement('article');el.className='item';
+  el.innerHTML=`<img src="assets/chowmin-plates.jpg" alt="Food"><div class="item-body"><h3>${p.emoji} ${p.name}</h3><p>${available?'Freshly prepared':'Currently unavailable'}</p><div class="price-row"><span class="price">₹${p.price}</span>${available?`<button class="btn red" onclick="addItem('${p.id}')">+ Add</button>`:'<button class="btn" disabled>Unavailable</button>'}</div></div>`;
+  menuGrid.appendChild(el);
+ });
+}
+
+const products=[
+ {id:'veg',name:'Veg Chowmin',price:30,emoji:'🍜'},
+ {id:'egg',name:'Egg Chowmin',price:40,emoji:'🍝'},
+ {id:'double',name:'Double Egg Chowmin',price:50,emoji:'🍜'},
+ {id:'chicken',name:'Chicken Chowmin',price:60,emoji:'🍲'},
+ {id:'vegman',name:'Veg Manchurian',price:30,emoji:'🥢'},
+ {id:'eggman',name:'Egg Manchurian',price:40,emoji:'🥢'},
+ {id:'chat',name:'Chat',price:30,emoji:'🥗'},
+ {id:'eggchat',name:'Egg Chat',price:40,emoji:'🍽️'},
+ {id:'pokoda',name:'Chicken Pokoda',price:50,emoji:'🍗'}
+];
+const cart={};
+const menuGrid=document.getElementById('menuGrid');
+renderMenu();renderOwnerControls();
+function addItem(id){if(!itemAvailable(id)){alert('This item is currently unavailable.');return;}cart[id]=(cart[id]||0)+1;renderCart()}
+function changeQty(id,delta){if(delta>0&&!itemAvailable(id)){alert('This item is currently unavailable.');return;}cart[id]=(cart[id]||0)+delta;if(cart[id]<=0)delete cart[id];renderCart()}
+function renderCart(){let count=0,total=0,lines=[];products.forEach(p=>{let q=cart[p.id]||0;if(q){count+=q;total+=q*p.price;lines.push(`<div class="cart-line"><span>${p.name} × ${q}<br><small>₹${p.price*q}</small></span><span class="qty"><button onclick="changeQty('${p.id}',-1)">−</button> ${q} <button onclick="changeQty('${p.id}',1)">+</button></span></div>`)}});document.getElementById('cartCount').textContent=count;updateOrderTypeOptions();document.getElementById('cartBox').innerHTML=count?lines.join('')+`<h3 style="text-align:right;color:#ffc64a">Subtotal: ₹${total}</h3><p class="notice">Delivery charge, if any, will be confirmed by the shop.</p><button class="btn" style="width:100%" onclick="openCheckout()">Proceed to Checkout</button>`:'<p>Your cart is empty. Add something tasty from the menu!</p>'}
+function cartCountTotal(){return Object.values(cart).reduce((a,b)=>a+b,0)}
+function updateOrderTypeOptions(){
+ const sel=document.getElementById('orderType');if(!sel)return;
+ const total=cartCountTotal(), deliveryAllowed=deliveryEnabled&&total>=5;
+ const deliveryOption=sel.querySelector('option[value="delivery"]');
+ deliveryOption.disabled=!deliveryAllowed;
+ if(!deliveryAllowed)sel.value='pickup';
+ const info=document.getElementById('orderTypeInfo');
+ if(info)info.textContent=!deliveryEnabled?'Home Delivery OFF hai. Sirf Shop Pickup milega.':(total<5?`Home Delivery ke liye kam se kam 5 items chahiye. Abhi ${total} item(s) hain. Shop Pickup available hai.`:'5 ya zyada items hain: Home Delivery ya Shop Pickup choose karein.');
+ const wrap=document.getElementById('addressWrap'), addr=document.getElementById('customerAddress');
+ if(wrap)wrap.style.display=sel.value==='delivery'?'block':'none';
+ if(addr)addr.required=sel.value==='delivery';
+}
+function openCheckout(){if(!Object.keys(cart).length)return;updateOrderTypeOptions();document.getElementById('checkout').showModal()}
+document.getElementById('paymentMethod').addEventListener('change',e=>{document.getElementById('paymentNote').textContent=e.target.value==='Cash on Delivery'?'Cash on Delivery: pay when your order arrives.':(SHOP_UPI_ID?'UPI payment can be started after confirming the order.':'UPI setup pending: please choose Cash on Delivery for now.')});
+document.getElementById('orderType').addEventListener('change',updateOrderTypeOptions);
+document.getElementById('checkoutForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ let name=document.getElementById('customerName').value.trim();
+ let phone=document.getElementById('customerPhone').value.trim();
+ let orderType=document.getElementById('orderType').value;
+ let address=document.getElementById('customerAddress').value.trim();
+ let payment=document.getElementById('paymentMethod').value;
+ let count=cartCountTotal();
+ if(orderType==='delivery'&&(!deliveryEnabled||count<5)){alert('Home Delivery ke liye Delivery ON aur minimum 5 items zaroori hain.');updateOrderTypeOptions();return;}
+ let rows=[],total=0;
+ products.forEach(p=>{let q=cart[p.id]||0;if(q){if(!itemAvailable(p.id)){alert(p.name+' abhi unavailable hai. Cart se remove karein.');return;}rows.push(`${p.name} x ${q} = Rs ${p.price*q}`);total+=p.price*q}});
+ if(payment==='UPI / Online Payment'&&!SHOP_UPI_ID){alert('UPI ID is not configured. Please choose Cash on Delivery.');return;}
+ let orderLabel=orderType==='delivery'?'HOME DELIVERY':'SHOP PICKUP';
+ let msg=`NEW FOOD ORDER - ORAM BROTHER'S CHOWMIN CENTRE%0AOrder type: ${encodeURIComponent(orderLabel)}%0AName: ${encodeURIComponent(name)}%0ACustomer phone: ${encodeURIComponent(phone)}%0A${orderType==='delivery'?'Delivery address: '+encodeURIComponent(address)+'%0A':''}%0ATotal plates/items: ${count}%0AItems:%0A${encodeURIComponent(rows.join('\\n'))}%0ASubtotal: Rs ${total}%0APayment: ${encodeURIComponent(payment)}`;
+ window.open(`https://wa.me/${WHATSAPP}?text=${msg}`,'_blank');
+ document.getElementById('checkout').close();
+ if(payment==='UPI / Online Payment'){
+  let upi=`upi://pay?pa=${encodeURIComponent(SHOP_UPI_ID)}&pn=${encodeURIComponent("Oram Brothers Chowmin Centre")}&am=${total.toFixed(2)}&cu=INR&tn=${encodeURIComponent("Food order")}`;
+  let pay=document.getElementById('upiPayPanel');
+  if(!pay){pay=document.createElement('div');pay.id='upiPayPanel';pay.className='cart-panel';document.querySelector('#cart').appendChild(pay)}
+  pay.innerHTML=`<h3 style="color:#ffc64a">Pay ₹${total} using UPI</h3><p>UPI ID: <strong>${SHOP_UPI_ID}</strong></p><a class="btn" href="${upi}">Open UPI Payment App</a><p class="notice">After paying, share the payment confirmation with the shop on WhatsApp. This website cannot verify payment automatically.</p>`;
+  pay.scrollIntoView({behavior:'smooth'});
+ }
+});
+window.addEventListener('DOMContentLoaded',()=>{renderDeliveryState();renderMenu();renderOwnerControls();renderCart();});renderDeliveryState();
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
+let installPrompt;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;let b=document.createElement('button');b.className='btn gold';b.textContent='Install App';b.style.position='fixed';b.style.left='14px';b.style.bottom='16px';b.style.zIndex='9';b.onclick=async()=>{installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;b.remove()};document.body.appendChild(b)});
+</script>
+</body></html>

@@ -21,7 +21,7 @@ h1{font-size:clamp(38px,6vw,64px);line-height:.98;color:var(--gold);margin:12px 
 .btn.red{background:var(--red)}.btn.gold{background:var(--gold);color:#211307}
 section{padding:48px 5%}.heading{text-align:center;margin:0 auto 25px;max-width:680px}.heading h2{font-size:32px;color:var(--gold);margin:8px 0}.heading p{color:var(--muted);line-height:1.5}
 .menu{background:#21140c}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.item{background:#120b07;border:1px solid #805d27;border-radius:16px;overflow:hidden}.item img{width:100%;height:135px;object-fit:cover}.item-body{padding:14px}.item h3{margin:0 0 7px;color:var(--gold);font-size:17px}.item p{margin:0 0 12px;color:var(--muted);font-size:13px}.price-row{display:flex;justify-content:space-between;align-items:center;gap:8px}.price{font-weight:900;color:#fff;font-size:18px}
+.item{background:#120b07;border:1px solid #805d27;border-radius:16px;overflow:hidden}.item img{width:100%;height:190px;object-fit:cover;display:block;background:#2a1b10}.item-body{padding:14px}.item h3{margin:0 0 7px;color:var(--gold);font-size:17px}.item p{margin:0 0 12px;color:var(--muted);font-size:13px}.price-row{display:flex;justify-content:space-between;align-items:center;gap:8px}.price{font-weight:900;color:#fff;font-size:18px}
 .cart-float{position:fixed;right:16px;bottom:16px;z-index:8;box-shadow:0 6px 25px #0009}
 .cart-panel{background:var(--panel);border:1px solid #805d27;border-radius:18px;padding:18px;margin-top:18px}
 .cart-line{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid #4d3824}.qty button{background:#3c2817;color:white;border:1px solid #8b672f;border-radius:8px;padding:5px 10px}
@@ -31,7 +31,7 @@ label{font-size:13px;color:#f4d9a9;font-weight:bold}textarea{min-height:75px;res
 .gallery{display:grid;grid-template-columns:1fr 1fr;gap:14px}.gallery img{width:100%;height:270px;object-fit:cover;border-radius:16px;border:1px solid #805d27}
 footer{text-align:center;padding:25px;background:#070504;color:#b9a994;font-size:13px}
 dialog{background:#1b100a;color:white;border:1px solid #9b702a;border-radius:18px;width:min(92%,560px);max-height:90vh;overflow:auto}dialog::backdrop{background:#000b}.dialog-head{display:flex;justify-content:space-between;align-items:center}.close{background:transparent;border:0;color:white;font-size:26px}
-@media(max-width:720px){header{display:block}nav{justify-content:space-between;margin-top:10px;gap:7px}nav a{font-size:12px}.hero{grid-template-columns:1fr;padding-top:32px}.hero img{height:245px}.grid{grid-template-columns:1fr 1fr}.item img{height:110px}.form-grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}.gallery img{height:230px}}
+@media(max-width:720px){header{display:block}nav{justify-content:space-between;margin-top:10px;gap:7px}nav a{font-size:12px}.hero{grid-template-columns:1fr;padding-top:32px}.hero img{height:245px}.grid{grid-template-columns:1fr 1fr}.item img{height:145px}.form-grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}.gallery img{height:230px}}
 @media(max-width:390px){.grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -91,21 +91,21 @@ function renderMenu(){
  products.forEach(p=>{
   const available=itemAvailable(p.id);
   const el=document.createElement('article');el.className='item';
-  el.innerHTML=`<img src="chowmin-plates.jpg" alt="Food"><div class="item-body"><h3>${p.emoji} ${p.name}</h3><p>${available?'Freshly prepared':'Currently unavailable'}</p><div class="price-row"><span class="price">₹${p.price}</span>${available?`<button class="btn red" onclick="addItem('${p.id}')">+ Add</button>`:'<button class="btn" disabled>Unavailable</button>'}</div></div>`;
+  el.innerHTML=`<img src="${p.image}" alt="${p.name} - freshly prepared food photo" loading="lazy"><div class="item-body"><h3>${p.emoji} ${p.name}</h3><p>${available?'Freshly prepared':'Currently unavailable'}</p><div class="price-row"><span class="price">₹${p.price}</span>${available?`<button class="btn red" onclick="addItem('${p.id}')">+ Add</button>`:'<button class="btn" disabled>Unavailable</button>'}</div></div>`;
   menuGrid.appendChild(el);
  });
 }
 
 const products=[
- {id:'veg',name:'Veg Chowmin',price:30,emoji:'🍜'},
- {id:'egg',name:'Egg Chowmin',price:40,emoji:'🍝'},
- {id:'double',name:'Double Egg Chowmin',price:50,emoji:'🍜'},
- {id:'chicken',name:'Chicken Chowmin',price:60,emoji:'🍲'},
- {id:'vegman',name:'Veg Manchurian',price:30,emoji:'🥢'},
- {id:'eggman',name:'Egg Manchurian',price:40,emoji:'🥢'},
- {id:'chat',name:'Chat',price:30,emoji:'🥗'},
- {id:'eggchat',name:'Egg Chat',price:40,emoji:'🍽️'},
- {id:'pokoda',name:'Chicken Pokoda',price:50,emoji:'🍗'}
+ {id:'veg',name:'Veg Chowmin',price:30,emoji:'🍜',image:'veg-chowmin.jpg'},
+ {id:'egg',name:'Egg Chowmin',price:40,emoji:'🍝',image:'egg-chowmin.jpg'},
+ {id:'double',name:'Double Egg Chowmin',price:50,emoji:'🍜',image:'double-egg-chowmin.jpg'},
+ {id:'chicken',name:'Chicken Chowmin',price:60,emoji:'🍲',image:'chicken-chowmin.jpg'},
+ {id:'vegman',name:'Veg Manchurian',price:30,emoji:'🥢',image:'veg-manchurian.jpg'},
+ {id:'eggman',name:'Egg Manchurian',price:40,emoji:'🥢',image:'egg-manchurian.jpg'},
+ {id:'chat',name:'Chat',price:30,emoji:'🥗',image:'chat.jpg'},
+ {id:'eggchat',name:'Egg Chat',price:40,emoji:'🍽️',image:'egg-chat.jpg'},
+ {id:'pokoda',name:'Chicken Pokoda',price:50,emoji:'🍗',image:'chicken-pakoda.jpg'}
 ];
 const cart={};
 const menuGrid=document.getElementById('menuGrid');

@@ -180,4 +180,27 @@ let installPrompt;window.addEventListener('beforeinstallprompt',e=>{e.preventDef
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
  </script>
+ <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDjvGstokTqm45i1PPFV9gFUdhYnIFZ0xo",
+    authDomain: "oram-brothers.firebaseapp.com",
+    projectId: "oram-brothers",
+    storageBucket: "oram-brothers.firebasestorage.app",
+    messagingSenderId: "407979519662",
+    appId: "1:407979519662:web:fb8a92a371760d682d873f",
+    measurementId: "G-LPYXPPRTLP"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 </body></html>
